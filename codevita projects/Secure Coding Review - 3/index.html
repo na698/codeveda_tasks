@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Review Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Secure Code Review Dashboard</h1>
+    </header>
+    <main>
+        <div class="summary-card">
+            <h2>Project Summary</h2>
+            <p><strong>Project Name:</strong> Simple Java Application</p>
+            <p><strong>Language:</strong> Java</p>
+            <p><strong>Issues Found:</strong> <span id="total-issues">0</span></p>
+        </div>
+
+        <div class="metrics-container">
+            <div class="metric-card">
+                <h3>Vulnerability Count</h3>
+                <canvas id="vulnerabilityChart"></canvas>
+            </div>
+            <div class="metric-card">
+                <h3>Vulnerability Types</h3>
+                <canvas id="typeChart"></canvas>
+            </div>
+        </div>
+
+        <div class="vulnerabilities-list">
+            <h2>Detailed Findings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Severity</th>
+                        <th>Vulnerability</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="vulnerability-table">
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

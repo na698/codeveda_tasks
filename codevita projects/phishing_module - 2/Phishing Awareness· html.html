@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing Awareness Training Module</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background: #004080;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    section {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: none;
+    }
+    h2 {
+      color: #004080;
+    }
+    .quiz {
+      margin-top: 15px;
+      padding: 10px;
+      background: #eaf2ff;
+      border-radius: 8px;
+    }
+    button {
+      background: #004080;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #003366;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .nav {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Phishing Awareness Training</h1>
+    <p>Learn how to recognize and avoid phishing attacks</p>
+  </header>
+
+  <section id="step1">
+    <h2>1. What is Phishing?</h2>
+    <p>Phishing is a cyber attack where attackers trick you into giving away sensitive information such as passwords, banking details, or personal data. These attacks often come through emails, fake websites, or messages.</p>
+    <div class="nav">
+      <span></span>
+      <button onclick="nextStep(1)">Next ▶</button>
+    </div>
+  </section>
+
+  <section id="step2">
+    <h2>2. Recognizing Phishing Emails</h2>
+    <ul>
+      <li>Suspicious sender address (typos, unknown domains).</li>
+      <li>Urgent or threatening language.</li>
+      <li>Grammar and spelling mistakes.</li>
+      <li>Fake links (hover to see actual URL).</li>
+      <li>Unexpected attachments.</li>
+    </ul>
+    <div class="nav">
+      <button onclick="prevStep(2)">◀ Back</button>
+      <button onclick="nextStep(2)">Next ▶</button>
+    </div>
+  </section>
+
+  <section id="step3">
+    <h2>3. Spotting Fake Websites</h2>
+    <ul>
+      <li>Check for HTTPS & padlock, but be cautious of fake SSL.</li>
+      <li>Verify domain spelling (e.g., paypa1.com vs paypal.com).</li>
+      <li>Be cautious of poor design or pop-up logins.</li>
+    </ul>
+    <div class="nav">
+      <button onclick="prevStep(3)">◀ Back</button>
+      <button onclick="nextStep(3)">Next ▶</button>
+    </div>
+  </section>
+
+  <section id="step4">
+    <h2>4. Social Engineering Tactics</h2>
+    <ul>
+      <li><b>Impersonation:</b> Pretending to be your boss or IT team.</li>
+      <li><b>Pretexting:</b> Fake scenarios to gain trust.</li>
+      <li><b>Baiting:</b> Free downloads or offers.</li>
+      <li><b>Quid pro quo:</b> Fake tech support help in exchange for info.</li>
+    </ul>
+    <div class="nav">
+      <button onclick="prevStep(4)">◀ Back</button>
+      <button onclick="nextStep(4)">Next ▶</button>
+    </div>
+  </section>
+
+  <section id="step5">
+    <h2>5. Best Practices</h2>
+    <ul>
+      <li>Think before you click links or attachments.</li>
+      <li>Do not share personal info via email.</li>
+      <li>Enable Multi-Factor Authentication (MFA).</li>
+      <li>Report suspicious emails.</li>
+      <li>Keep your software updated.</li>
+    </ul>
+    <div class="nav">
+      <button onclick="prevStep(5)">◀ Back</button>
+      <button onclick="nextStep(5)">Next ▶</button>
+    </div>
+  </section>
+
+  <section id="step6" class="quiz">
+    <h2>6. Quick Quiz</h2>
+    <p><b>Question:</b> You receive an email from <i>support@paypa1.com</i> asking you to reset your password. What should you do?</p>
+    <button onclick="showResult('ignore')">Ignore and report it</button>
+    <button onclick="showResult('click')">Click the link and reset</button>
+    <button onclick="showResult('reply')">Reply to confirm details</button>
+    <p class="result" id="quizResult"></p>
+    <div class="nav">
+      <button onclick="prevStep(6)">◀ Back</button>
+      <button onclick="nextStep(6)">Next ▶</button>
+    </div>
+  </section>
+
+  <section id="step7">
+    <h2>7. Conclusion</h2>
+    <p>Phishing attacks are preventable if you stay alert. Always verify the source before clicking or sharing information. <b>If in doubt, don’t click it out!</b></p>
+    <div class="nav">
+      <button onclick="prevStep(7)">◀ Back</button>
+      <span>🎉 End of Module</span>
+    </div>
+  </section>
+
+  <script>
+    let currentStep = 1;
+    document.getElementById("step" + currentStep).style.display = "block";
+
+    function nextStep(step) {
+      document.getElementById("step" + step).style.display = "none";
+      document.getElementById("step" + (step + 1)).style.display = "block";
+      currentStep = step + 1;
+    }
+
+    function prevStep(step) {
+      document.getElementById("step" + step).style.display = "none";
+      document.getElementById("step" + (step - 1)).style.display = "block";
+      currentStep = step - 1;
+    }
+
+    function showResult(answer) {
+      const result = document.getElementById('quizResult');
+      if(answer === 'ignore') {
+        result.style.color = 'green';
+        result.innerText = '✅ Correct! This is a phishing attempt. Always ignore and report it.';
+      } else {
+        result.style.color = 'red';
+        result.innerText = '❌ Incorrect. This is a phishing email. You should report and not engage.';
+      }
+    }
+  </script>
+</body>
+</html>
